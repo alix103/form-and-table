@@ -6,38 +6,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.css">
     <title>Formulario</title>
- 
+   
 </head>
 <body onload="form1.nombre.focus()">
-    
     <div class="login-box">
-        <img src="images/logo.png" class="avatar" alt="image">
-
-        <h1>DATOS PERSONALES</h1>
-        <form method="POST" name="form1" id="form1" action="#"  autocomplete="off">
-
-
-            <label for="nombre"></label>
-            <input type="text" name="nombre" id="nombre" placeholder="Digite Nombre">
-
-            <label for="apellido"></label>
-            <input type="text" name="apellido" id="apellido" placeholder="Digite Apellido">
-
-            <label for="telefono"></label>
-            <input type="number" name="telefono" id="telefono" placeholder="Digite Teléfono">
-
-            <label for="correo"></label>
-            <input type="text" name="correo" id="correo" placeholder="Digite E-mail">
-
+        <form name="form1" id="form1" method="post" autocomplete="off" >
+            <img src="images/logo.png" class="imagen" alt="image">
+    
+            <h1>Datos Personales</h1>
+            <div>
+                <label for="nombre"></label>
+                <input type="text" name="nombre" id="nombre" placeholder="Tu Nombre" required>
+            </div>
             
-            <input type="submit" name="inicio" id="inicio" value="Enviar" >
-
+            <div>
+                <label for="apellido"></label>
+                <input type="text" name="apellido" id="apellido" placeholder="Tu Apellido" required>
+            </div>
+            
+            <div>
+                <label for="telefono"></label>
+                <input type="number" name="telefono" id="telefono"  placeholder="Tu Teléfono" required >
+            </div>
+            
+            <div>
+                <label for="correo"></label>
+                <input type="email" name="correo" id="correo"  placeholder="Digite E-mail" required>
+            </div>
+            
+            <div>
+                <input type="submit" class="submit" name="submit" value="Enviar">
+            </div>
+            
         </form>
-
     </div>
+        
+    
+    <div class="cont-table">
+        <table id="registro">
+            
+            <h1 class="titulo">Datos registrados</h1>
+            <h5>Datos registrados recientemente</h5>
 
-   
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Teléfono</th>
+                    <th>E-mail</th>
+                </tr>
+            </thead>
 
+            <tbody>
+                <td>Alix Teresa</td>
+                <td>Bermudez Galindo</td>
+                <td>3134783993</td>
+                <td>alix34638@gmail.com</td>
+            </tbody>
 
+        </table>
+    </div>
+    <script src="js/cod.js"></script>
 </body>
 </html>
