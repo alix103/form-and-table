@@ -1,58 +1,73 @@
+const $formUser = document.getElementById('form1')
+const $nombre = document.getElementById('input-nombre')
+const $apellido = document.getElementById('input-apellido')
+const $telefono = document.getElementById('input-telefono')
+const $correo = document.getElementById('input-correo')
+const $data = document.getElementById('table-body')
 
-document.querySelector("input[type=submit]").addEventListener("click",function(event){
+$formUser.addEventListener('submit', (event) =>{
+    event.preventDefault()
 
-    event.preventDefault();
+    const nombre = $nombre.value
+    const apellido = $apellido.value
+    const telefono = $telefono.value
+    const correo = $correo.value
 
- 
-    const nombre=document.querySelector("input[name=nombre]");
-    const apellido=document.querySelector("input[name=apellido]");
-    const telefono=document.querySelector("input[name=telefono]");
-    const correo=document.querySelector("input[name=correo]");
+    if (nombre.trim() === '' || nombre.trim() === undefined){
+            return alert('ingrese el nombre')
+    }
 
-    addRow(nombre.value, apellido.value,telefono.value,correo.value);
-    addInput(nombre.value, apellido.value, telefono.value,correo.value);
- 
+    if (apellido.trim() === '' || apellido.trim() === undefined){
+        return alert('ingrese el apellido')
+    }
 
-    correo.value = "";
-    telefono.value ="";
-    apellido.value ="";
-    nombre.value ="";
-    nombre.focus();
+    if (telefono.trim() === '' || telefono.trim() === undefined){
+        return alert('ingrese el telefono')
+    }
 
- 
-});
+    if (correo.trim() === '' || correo.trim() === undefined){
+        return alert('ingrese el correo')
+    }
 
+    const $tr = document.createElement('tr')
 
+    const $tdNombre = document.createElement('td')
+    const $divNombre = document.createElement('div')
+    $divNombre.innerText = nombre
+    $tdNombre.appendChild($divNombre)
+    $tr.appendChild($tdNombre)
 
-function addRow(nombre, apellido,telefono,correo) {
+    const $tdApellido = document.createElement('td')
+    const $divApellido = document.createElement('div')
+    $divApellido.innerText = apellido
+    $tdApellido.appendChild($divApellido)
+    $tr.appendChild($tdApellido)
 
-    const tr=document.createElement("tr");
- 
-    const tdNombre=document.createElement("td");
-    let txt=document.createTextNode(nombre);
-    tdNombre.appendChild(txt);
-    tdNombre.className="nombre";
- 
-    const tdApellido=document.createElement("td");
-    txt=document.createTextNode(apellido);
-    tdApellido.appendChild(txt);
-    tdApellido.className="apellido";
+    const $tdTelefono = document.createElement('td')
+    const $divTelefono = document.createElement('div')
+    $divTelefono.innerText = telefono
+    $tdTelefono.appendChild($divTelefono)
+    $tr.appendChild($tdTelefono)
 
-    const tdTelefono=document.createElement("td");
-    txt=document.createTextNode(telefono);
-    tdTelefono.appendChild(txt);
-    tdTelefono.className="telefono";
+    const $tdCorreo = document.createElement('td')
+    const $divCorreo = document.createElement('div')
+    $divCorreo.innerText = correo
+    $tdCorreo.appendChild($divCorreo)
+    $tr.appendChild($tdCorreo)
 
-    const tdCorreo=document.createElement("td");
-    txt=document.createTextNode(correo);
-    tdCorreo.appendChild(txt);
-    tdCorreo.className="correo";
+    $data.appendChild($tr)
 
-    tr.appendChild(tdNombre);
-    tr.appendChild(tdApellido);
-    tr.appendChild(tdTelefono);
-    tr.appendChild(tdCorreo);
+    $nombre.value = ''
+    $apellido.value = ''
+    $telefono.value = ''
+    $correo.value = ''
 
-    const tbody=document.getElementById("registro").querySelector("tbody").appendChild(tr);
+    const tdRemove=document.createElement("td");
+    const buttonRemove=document.createElement("text");
+    buttonRemove="Eliminar";
+})
 
+buttonRemove.onclick=function () {
+    // elimina la columna
+    this.closest("tr").remove();
 }
