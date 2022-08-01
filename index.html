@@ -6,66 +6,106 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.css">
     <title>Formulario</title>
+
+        <!-- FONT AWESOME -->
+        <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+      />
+  
+      <!-- GOOGLE FONTS -->
+      <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&display=swap"
+        rel="stylesheet"
+      />
    
 </head>
 <body onload="form1.nombre.focus()">
+    <!--formulario-->
     <div class="login-box">
-        <form name="form1" id="form1" method="post" autocomplete="off" >
-            <img src="images/logo.png" class="imagen" alt="image">
+        <img src="images/logo.png" class="imagen" alt="image">
     
-            <h1>Datos Personales</h1>
-            <div>
+        <h1>Register Account</h1>
+        <form name="form1" class="form" id="form1" method="post" autocomplete="off" >
+            
+            <div class="input-text">
+                <div>
+                    <i class="fa-solid fa-user"></i>
+                </div>
                 <label for="nombre"></label>
-                <input type="text" name="nombre" id="nombre" placeholder="Tu Nombre" required>
+                <input type="text" name="input-nombre" id="input-nombre" placeholder="Tu Nombre">
             </div>
             
-            <div>
+            <div class="input-text">
+                <div>
+                    <i class="fa-solid fa-user"></i>
+                </div>
                 <label for="apellido"></label>
-                <input type="text" name="apellido" id="apellido" placeholder="Tu Apellido" required>
+                <input type="text" name="input-apellido" id="input-apellido" placeholder="Tu Apellido">
             </div>
             
-            <div>
+            <div class="input-text">
+                <div>
+                    <i class="fa-solid fa-phone"></i>
+                </div>
                 <label for="telefono"></label>
-                <input type="number" name="telefono" id="telefono"  placeholder="Tu Teléfono" required >
+                <input type="number" name="input-telefono" id="input-telefono"  placeholder="Tu Teléfono">
             </div>
             
-            <div>
+            <div class="input-text">
+                <div>
+                    <i class="fa-solid fa-envelope"></i>
+                </div>
                 <label for="correo"></label>
-                <input type="email" name="correo" id="correo"  placeholder="Digite E-mail" required>
+                <input type="email" name="input-correo" id="input-correo"  placeholder="Digite E-mail">
             </div>
             
             <div>
-                <input type="submit" class="submit" name="submit" value="Enviar">
+                <input type="submit" class="submit" name="submit" value="Registrar">
             </div>
             
         </form>
+        
+        <footer>
+        <h5>designed by freepik</h5>
+      </footer>
     </div>
         
-    
+    <!--tabla-->
     <div class="cont-table">
         <table id="registro">
             
-            <h1 class="titulo">Datos registrados</h1>
-            <h5>Datos registrados recientemente</h5>
+            <h1 class="titulo">Agent List (08)</h1>
+            <h5>Your most recent Agent</h5>
 
             <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Teléfono</th>
-                    <th>E-mail</th>
+                <tr class="require-data">
+                    <th>Name</th>
+                    <th>Last Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Eliminar</th>
                 </tr>
             </thead>
 
-            <tbody>
-                <td>Alix Teresa</td>
-                <td>Bermudez Galindo</td>
-                <td>3134783993</td>
-                <td>alix34638@gmail.com</td>
+            <tbody id="table-body">
+                <tr class="data">
+                    <td>Alix Teresa</td>
+                    <td>Bermudez Galindo</td>
+                    <td>3134783993</td>
+                    <td>alix34638@gmail.com</td>
+                    <td><button>Eliminar</button></td>
+                </tr>
+                
             </tbody>
 
         </table>
     </div>
-    <script src="js/cod.js"></script>
+    
+    <script src="https://kit.fontawesome.com/e5b8fa4e0c.js" crossorigin="anonymous"></script>
+    <script src="js/cod.js" async></script>
 </body>
 </html>

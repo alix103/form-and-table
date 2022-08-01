@@ -1,9 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&family=Poppins:wght@100;200&display=swap');
+
+:root{
+    --btn-color:  #37c88b;
+    --text-color: #74817c;
+    --text-font:  'Poppins', sans-serif;
+    
+}
+
 body {
     margin: 0;
     padding: 0;
-    background: linear-gradient( #a9d0c6, #e6efe3, #779694) no-repeat;
+    background: linear-gradient(#a9d0c6, #e6efe3, #779694) no-repeat;
     background-size: cover;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', 'poppins', sans-serif;
     height: 100vh;
     display: inline-block;
 }
@@ -11,18 +20,24 @@ body {
 /* form */
 
 .login-box {
-    width: 325px;
-    height: 460px;
-    background:  linear-gradient(to bottom, #cde9e4, #eaf4e9, #dde6de) no-repeat;
+    width: 300px;
+    height: 420px;
+    background:  linear-gradient( 
+        #cde9e4, 
+        #dde6de,
+        #eaf4e9, 
+        #dde6de
+        ) no-repeat;
     color: #7c8885;
     top: 50%;
-    left: 45%;
+    left: 30%;
     position: relative;
     transform: translate(-50%, -50%);
     box-sizing: border-box;
     padding: 70px 30px;
-    border-radius: 7%;
-    box-shadow: 0 8px 10px 0 grey;
+    border-radius: 20px;
+    -webkit-box-shadow: 5px 9px 16px -3px rgba(0, 0, 0, 0.27);
+    box-shadow: 5px 9px 16px -3px rgba(0, 0, 0, 0.27);
 }
 
 .login-box .imagen {
@@ -32,7 +47,9 @@ body {
     position: absolute;
     top: -10%;
     left: calc(50% - 50px);
-    box-shadow: 0 8px 20px 0 grey;
+  
+    -webkit-box-shadow: 5px 9px 16px -3px rgba(0, 0, 0, 0.27);
+    box-shadow: 5px 9px 16px -3px rgba(0, 0, 0, 0.27);
 }
 
 .login-box h1 {
@@ -42,18 +59,21 @@ body {
     font-size: 22px;
 }
 
-.login-box label {
-    margin: 0;
-    padding: 0;
-    font-weight: bold;
-    display: block;
-    
-}
-
 .login-box input {
     width: 100%;
-    margin-bottom: 20px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', 'FontAwesome', sans-serif;
+}
+
+.login-box .form .input-text{
+    display: flex;
+    background-color: white;
+    margin-top: 10px;
+    font-family: 'Poppins', 'FontAwesome', sans-serif;
+ 
+}
+
+.login-box .form .input-text i{
+    font-size: 25px;
 }
 
 .login-box input[type="text"], 
@@ -63,9 +83,9 @@ body {
     border-bottom: 1px solid #fff;
     background: #fff;
     outline: none;
-    height: 40px;
+    height: 35px;
     color: black;
-    font-size: 16px;
+    font-size: 17px;
 }
 
 .login-box input[type="submit"] {
@@ -76,48 +96,149 @@ body {
     color: #fff;
     font-size: 18px;
     border-radius: 20px;
+    margin-top: 20px;
 }
+
+/* quitar flechas input number*/
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+input[type=number] { -moz-appearance:textfield; }
 
 .login-box .submit:hover {
     cursor: pointer;
-    background: #34ddc1;
+    background-color: var(--btn-color);
 }
+
+footer {
+    color: var(--text-color);
+    margin-top: 25%;
+    margin-left: 40%;
+  }
 
 /* table*/
 
 .cont-table{
-    margin-top: -65%;
-    margin-left: 90%;
+    margin-top: -50%;
+    margin-left: 65%;
     width: 100%;
 }
 
-h1{
+.titulo{
     text-align: left;
     font-size: 200%;
-    margin-top: 20px;
-    margin-left: 20px;
+    margin-top: 50px;
+    margin-left: -50px;
+    color:#171c35;
+    font-family: 'Poppins', sans-serif; 
 }
 
 h5{
     text-align: left;
     font-size: 100%;
-    margin-top: 10px;
-    margin-left: 20px;
+    margin-top: 3px;
+    margin-left: -50px;
+    font-family: 'Poppins', sans-serif; 
+    color:#171c35;
 }
 
 
 table {
-    width: 100%;    
-    border: none;
+    table-layout:fixed; /*la tabla renderiza mucho más rápido*/
+    border-collapse:collapse;
+    box-shadow: 0 5px 10px #f3f3f4;
     text-align: left;
-    align-items: center;
-    font-size: 100%;
-    margin-top: 10px;
-    margin-left: 20px;
-    margin-right: 50px;
+    overflow: hidden;
+    margin-left: -50px;
+    font-family: 'Poppins', sans-serif; ;
 }
 
-td, th {
-    background-color: #eaeef8;
-    padding: 10px;
+th {
+    padding: 1rem 2rem;
+    text-transform: capitalize;
+    font-size: 0.9rem;
+    font-weight: 900;
+}
+
+td {
+    background-image: linear-gradient(to bottom, #eeeff8, #f3f3fa, #f7f7fb, #fbfbfd, #ffffff);
+    padding: 1rem 2rem;
+
+}
+
+
+/* MEDIA QUERY */ 
+/* Para 320px */  
+
+@media only screen and (max-width: 340px) and (min-width: 5px)  { 
+
+    section{
+        width:95vw;
+        
+    }
+
+    h1{
+        width: 90vw;
+    }
+    
+    
+    select{
+        width:85vw;
+       margin:10px 0;
+    }
+    input{
+        width:85vw;
+       margin-bottom: 5px;
+    }
+
+    thead {
+        width: 65vw;
+    }
+
+    tr {
+        width: 65vw;
+    }
+
+}
+
+/* Para 480px */  
+
+@media only screen and (max-width: 500px) and (min-width: 341px) { 
+    form {
+        width: 100vw;
+        
+    }
+    .placeIcon{
+        width: 50vw;
+                
+    }
+    .submit {
+        width: 45vw;
+    }
+     
+}
+/* Para 600px */  
+
+
+@media only screen and (max-width: 620px) and (min-width: 501px) { 
+    form{
+        width: 50vw;
+    } 
+
+    .placeIcon{
+        width:35vw;
+    }
+}
+/* Para 800px */  
+
+
+@media only screen and (max-width: 820px) and (min-width: 621px) {  
+}
+/* Para 1000x */ 
+
+@media only screen and (max-width: 1024px) and (min-width: 821px) {  
 }
