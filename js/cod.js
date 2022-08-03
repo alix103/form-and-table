@@ -90,3 +90,42 @@ function eliminarFila(event) {
     }
  
 }
+
+/*Funcion de Capturar, Almacenar datos y Limpiar campos*/
+$(document).ready(function(){    
+    $('submit').click(function(){        
+        /*Captura de datos escrito en los inputs*/        
+        let nom = document.getElementById("nombre").value;
+        let apel = document.getElementById("apellido").value;
+        let tel = document.getElementById("telefono").value;
+        let corr = document.getElementById("correo").value;
+
+
+        /*Guardando los datos en el LocalStorage*/
+        localStorage.setItem("Nombre", nom);
+        localStorage.setItem("Apellido", apel);
+        localStorage.setItem("Telefono", tel);
+        localStorage.setItem("Telefono", corr);
+        /*Limpiando los campos o inputs*/
+        document.getElementById("nombre").value = "";
+        document.getElementById("apellido").value = "";
+        document.getElementById("telefono").value = "";
+        document.getElementById("correo").value = "";
+    });   
+});
+
+/*Funcion Cargar y Mostrar datos*/
+$(document).ready(function(){    
+    $('submit').click(function(){                       
+        /*Obtener datos almacenados*/
+        let nombre = localStorage.getItem("Nombre");
+        let apellido = localStorage.getItem("Apellido");
+        let telefono = localStorage.getItem("Telefono");
+        var correo = localStorage.getItem("Correo");
+        /*Mostrar datos almacenados*/      
+        document.getElementById("nombre").innerHTML = nombre;
+        document.getElementById("apellido").innerHTML = apellido; 
+        document.getElementById("telefono").innerHTML = telefono; 
+        document.getElementById("correo").innerHTML = correo; 
+    });   
+});
