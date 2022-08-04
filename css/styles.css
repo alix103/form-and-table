@@ -10,7 +10,7 @@
 body {
     margin: 0;
     padding: 0;
-    background: linear-gradient(#a9d0c6, #e6efe3, #779694) no-repeat;
+    background: linear-gradient(#a9d0c6, #e6efe3, #779694) ;
     background-size: cover;
     font-family: 'Montserrat', 'poppins', sans-serif;
     height: 100vh;
@@ -29,8 +29,9 @@ body {
         #dde6de
         ) no-repeat;
     color: #7c8885;
-    top: 50%;
-    left: 27%;
+    top: 55%;
+    left: 45%;
+    right: 10%;
     position: relative;
     transform: translate(-50%, -50%);
     box-sizing: border-box;
@@ -123,8 +124,9 @@ footer {
 /* table*/
 
 .cont-table{
-    margin-top: -50%;
-    margin-left: 60%;
+    margin-top: -70%;
+    margin-left: 100%;
+    margin-right: 20%;
     width: 100%;
 }
 

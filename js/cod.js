@@ -1,3 +1,5 @@
+let guardarUsuarios = obtenerLocalStorage()
+
 document.querySelector("input[type=submit]").addEventListener("click",function(e){
     e.preventDefault();
     let transactionFormData = new FormData(form1);
@@ -30,8 +32,17 @@ document.querySelector("input[type=submit]").addEventListener("click",function(e
     }
 
 
-    agregarFila(nombre.value, apellido.value,telefono.value,correo.value);
- 
+    let nuevoUsuario = {
+        nombre : nombre.value,
+        apellido : apellido.value,
+        telefono : telefono.value,
+        correo : correo.value
+    }
+
+    guardarUsuarios.push(nuevoUsuario)
+
+    renderizarUsuario()
+    actualizarLocalStorage()
     //limpiamos los valores del input
     correo.value = "";
     telefono.value ="";
@@ -41,54 +52,69 @@ document.querySelector("input[type=submit]").addEventListener("click",function(e
  
 });
 
-function agregarFila(nombre, apellido,telefono,correo) {
-    // añadimos el alumno a la tabla crando el tr, td's y el botón para eliminarlo
-    const tr=document.createElement("tr");
+
+function renderizarUsuario(){
+    let tbody = document.createElement("tbody");
+    for(let i=0; i<guardarUsuarios.length; i++){
+        let usuario = guardarUsuarios[i]
+        const tr=document.createElement("tr");
  
-    const tdNombre=document.createElement("td");
-    let txt=document.createTextNode(nombre);
-    tdNombre.appendChild(txt);
-    tdNombre.className="nombre";
- 
-    const tdApellido=document.createElement("td");
-    txt=document.createTextNode(apellido);
-    tdApellido.appendChild(txt);
-    tdApellido.className="apellido";
+        const tdNombre=document.createElement("td");
+        let txt=document.createTextNode(usuario.nombre);
+        tdNombre.appendChild(txt);
+        tdNombre.className="nombre";
+    
+        const tdApellido=document.createElement("td");
+        txt=document.createTextNode(usuario.apellido);
+        tdApellido.appendChild(txt);
+        tdApellido.className="apellido";
 
-    const tdTelefono=document.createElement("td");
-    txt=document.createTextNode(telefono);
-    tdTelefono.appendChild(txt);
-    tdTelefono.className="telefono";
+        const tdTelefono=document.createElement("td");
+        txt=document.createTextNode(usuario.telefono);
+        tdTelefono.appendChild(txt);
+        tdTelefono.className="telefono";
 
-    const tdCorreo=document.createElement("td");
-    txt=document.createTextNode(correo);
-    tdCorreo.appendChild(txt);
-    tdCorreo.className="correo";
+        const tdCorreo=document.createElement("td");
+        txt=document.createTextNode(usuario.correo);
+        tdCorreo.appendChild(txt);
+        tdCorreo.className="correo";
 
-    const tdRemove=document.createElement("td");
-    const buttonRemove=document.createElement("img");
-    buttonRemove.src="../images/borrar.png";
-    buttonRemove.onclick=eliminarFila;
-    tdRemove.appendChild(buttonRemove);
+        const tdRemove=document.createElement("td");
+        const buttonRemove=document.createElement("img");
+        buttonRemove.src="../images/borrar.png";
+        buttonRemove.onclick=() =>{
+            guardarUsuarios.splice(i,1)
+            renderizarUsuario()
+            actualizarLocalStorage()
+        };
+        tdRemove.appendChild(buttonRemove);
 
-    tr.appendChild(tdNombre);
-    tr.appendChild(tdApellido);
-    tr.appendChild(tdTelefono);
-    tr.appendChild(tdCorreo);
-    tr.appendChild(tdRemove);
+        tr.appendChild(tdNombre);
+        tr.appendChild(tdApellido);
+        tr.appendChild(tdTelefono);
+        tr.appendChild(tdCorreo);
+        tr.appendChild(tdRemove);
 
-    const tbody=document.getElementById("registro").querySelector("tbody").appendChild(tr);
+        tbody.appendChild(tr);
+    }
 
+    document.querySelector("#registro tbody").remove()
+    document.querySelector("#registro").appendChild(tbody)
+
+    
 }
 
-function eliminarFila(event) {
+function actualizarLocalStorage(){
+    localStorage.setItem("usuario", JSON.stringify(guardarUsuarios))
+}
 
-    this.closest("tr").remove();
-
-    if (document.getElementById("registro").querySelector("tbody").querySelectorAll("tr").length===0) {
-        document.getElementById("registro").classList.add("hide");
+function obtenerLocalStorage(){
+    let usuario = localStorage.getItem("usuario")
+    if(usuario){
+        return JSON.parse(usuario)
+    }else{
+        return []
     }
- 
 }
 
 /*Funcion de Capturar, Almacenar datos y Limpiar campos*/
@@ -129,3 +155,6 @@ $(document).ready(function(){
         document.getElementById("correo").innerHTML = correo; 
     });   
 });
+
+
+renderizarUsuario()
